@@ -1,7 +1,7 @@
 /* ============================================================================
- * event.config.ts, ARC HACKATHON, SINGLE SOURCE OF TRUTH
+ * event.config.ts, ARENA, SINGLE SOURCE OF TRUTH
  * ----------------------------------------------------------------------------
- * Arc Hackathon is an edition of the Crucible hackathon engine: a directed,
+ * Arena is an edition of the Crucible hackathon engine: a directed,
  * multi-ecosystem builder weekend hosted by Arc. The Bitcoin-only version
  * was edition zero; this is the Base x Solana x Bitcoin edition. To run the
  * next one, swap values here, not markup. Search "TODO_" before launch.
@@ -28,9 +28,9 @@ export const links: Record<string, LinkEntry> = {
   "apply-media": { label: "Apply for media access", destination: "https://tally.so/r/TODO_MEDIA_FORM", kind: "secondary" },
 
   // ---- secondary CTAs ----
-  sponsor: { label: "Sponsor a bounty", destination: "mailto:partners@thearccity.com?subject=Arc%20Hackathon%20sponsorship", kind: "secondary" },
+  sponsor: { label: "Sponsor a bounty", destination: "mailto:partners@thearccity.com?subject=Arena%20sponsorship", kind: "secondary" },
   mentor: { label: "Become a judge or mentor", destination: "https://tally.so/r/TODO_MENTOR_FORM", kind: "secondary" },
-  partner: { label: "Partner with us", destination: "mailto:hello@thearccity.com?subject=Arc%20Hackathon%20partnership", kind: "secondary" },
+  partner: { label: "Partner with us", destination: "mailto:hello@thearccity.com?subject=Arena%20partnership", kind: "secondary" },
   livestream: { label: "Watch the livestream", destination: "https://youtube.com/@TODO_CHANNEL", kind: "ghost" },
 
   // ---- host + the three ecosystems, all tracked ----
@@ -43,7 +43,7 @@ export const links: Record<string, LinkEntry> = {
 
 export const event = {
   /* ---- identity ---- */
-  name: "Arc Hackathon",
+  name: "Arena",
   // hero kicker line
   kicker: "Base × Solana × Bitcoin · hosted by Arc",
   positioning: "One weekend. The best builders on Base, Solana, and Bitcoin, in one room. Hosted by Arc. Forged, not gathered.",
@@ -76,7 +76,7 @@ export const event = {
   /* ---- who's in the room: four audiences, one switchboard ----
    * TODO_SEATS: confirm capacity numbers (they double as scarcity). */
   connectivity:
-    "Arc Hackathon is run like a switchboard. Builders, investors, incubators, and the people who tell the story are in one room on purpose, matched by hand, not left to a name-tag scramble.",
+    "Arena is run like a switchboard. Builders, investors, incubators, and the people who tell the story are in one room on purpose, matched by hand, not left to a name-tag scramble.",
   audiences: [
     { key: "builders", label: "Engineers", value: "Ship something real in one weekend. Mentors on the floor, capital in the room, and a stage that actually gets watched.", slug: "apply-builder", cta: "Apply as a builder", seats: "50 team seats" },
     { key: "investors", label: "Investors", value: "Meet the teams while the code is still warm. First look and first check, before the round is a round.", slug: "apply-investor", cta: "Apply as an investor", seats: "20 investor seats" },
@@ -99,7 +99,7 @@ export const event = {
   /* ---- the pitch ---- */
   pitch: [
     "Most hackathons hand you a room, a deadline, and a sponsor table, then disappear.",
-    "Arc Hackathon is directed. Base, Solana, and Bitcoin in one room, a curated problem set, a produced run of show, and no dead air, every hour pulls you toward the next.",
+    "Arena is directed. Base, Solana, and Bitcoin in one room, a curated problem set, a produced run of show, and no dead air, every hour pulls you toward the next.",
     "Builders, not spectators. You leave with a thing that works and the people who can fund it.",
   ],
 
@@ -162,7 +162,7 @@ export const event = {
   rsvp: {
     mode: "email" as "email" | "embed" | "redirect",
     // TODO_RSVP_DESTINATION: the owned short link /rsvp (and /door) 302s here.
-    destination: "https://lu.ma/TODO_ARC_HACKATHON",
+    destination: "https://lu.ma/TODO_ARENA",
     embedUrl: "https://lu.ma/embed/event/TODO/simple",
   },
 
@@ -179,9 +179,9 @@ export const event = {
 
   /* ---- SEO ---- */
   seo: {
-    url: "https://archackathon.vercel.app",
+    url: "https://arcarena.xyz",
     description:
-      "Arc Hackathon, a directed multi-ecosystem hackathon hosted by Arc. The best builders on Base, Solana, and Bitcoin, one weekend, one room. Documented and livestreamed.",
+      "Arena, a directed multi-ecosystem hackathon hosted by Arc. The best builders on Base, Solana, and Bitcoin, one weekend, one room. Documented and livestreamed.",
   },
 };
 
