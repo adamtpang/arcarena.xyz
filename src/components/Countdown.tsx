@@ -21,9 +21,9 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 /**
  * Live countdown to the configured target. Renders a stable placeholder on the
- * server / first paint (no hydration mismatch), then ticks every second on the client.
+ * server / first paint (no hydration mismatch), then ticks every second.
  */
-export function Countdown({ targetISO }: { targetISO: string }) {
+export function Countdown({ targetISO, doneLabel = "We are live" }: { targetISO: string; doneLabel?: string }) {
   const [t, setT] = useState<Remaining | null>(null);
 
   useEffect(() => {
@@ -41,35 +41,26 @@ export function Countdown({ targetISO }: { targetISO: string }) {
     ["Sec", t ? pad(t.s) : "––"],
   ];
 
+  if (t?.done) {
+    return (
+      <span className="text-sm font-medium uppercase tracking-[0.2em] text-gold">
+        {doneLabel}
+      </span>
+    );
+  }
+
   return (
-    <div
-      role="timer"
-      aria-label="Time until doors open"
-      className="flex items-end gap-2 sm:gap-5"
-    >
-      {t?.done ? (
-        <span className="mono text-forge text-sm tracking-[0.2em] uppercase">
-          Doors are open, we&apos;re live
-        </span>
-      ) : (
-        cells.map(([label, value], i) => (
-          <div key={label} className="flex items-end gap-2 sm:gap-5">
-            <div className="flex flex-col items-center">
-              <span className="display heat-text text-[1.8rem] sm:text-5xl md:text-6xl tabular-nums leading-none">
-                {value}
-              </span>
-              <span className="mono mt-2 text-[0.6rem] sm:text-[0.65rem] tracking-[0.2em] uppercase text-ink-faint">
-                {label}
-              </span>
-            </div>
-            {i < cells.length - 1 && (
-              <span className="display text-xl sm:text-4xl md:text-5xl leading-none text-ink-faint/40 pb-3">
-                :
-              </span>
-            )}
-          </div>
-        ))
-      )}
+    <div role="timer" aria-label="Time until day one" className="flex items-end gap-4 sm:gap-7">
+      {cells.map(([label, value]) => (
+        <div key={label} className="flex flex-col">
+          <span className="text-[2.1rem] font-semibold leading-none tabular-nums tracking-tight sm:text-5xl">
+            {value}
+          </span>
+          <span className="mt-2 text-[0.6rem] uppercase tracking-[0.2em] text-ink-faint sm:text-[0.65rem]">
+            {label}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }

@@ -1,27 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Arena, a Base, Solana and Bitcoin builder weekend hosted by Arc">
-  <defs>
-    <linearGradient id="wm" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1A1613"/>
-      <stop offset="0.6" stop-color="#5e0f1a"/>
-      <stop offset="1" stop-color="#C8102E"/>
-    </linearGradient>
-    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#C8102E"/>
-      <stop offset="0.55" stop-color="#A10D25"/>
-      <stop offset="1" stop-color="#B8892A"/>
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="arcarena, the Bitcoin track, sponsored by Fulgur Ventures">
+  <rect width="1200" height="630" fill="#FFFBF2"/>
 
-  <rect width="1200" height="630" fill="#F4EFE6"/>
+  <text x="80" y="118" font-family="Helvetica,Arial,sans-serif" font-size="22" letter-spacing="4" fill="rgba(26,22,19,0.5)">THE BITCOIN TRACK &#183; SPONSORED BY FULGUR VENTURES</text>
 
-  <text x="80" y="120" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="22" letter-spacing="4" fill="rgba(26,22,19,0.6)">BASE &#215; SOLANA &#215; BITCOIN &#183; HOSTED BY ARC</text>
+  <text x="74" y="350" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="176" letter-spacing="-6" fill="#1A1A1A">&#226;rcarena</text>
 
-  <text x="76" y="350" font-family="Georgia,'Times New Roman',serif" font-weight="800" font-size="184" letter-spacing="-3" fill="url(#wm)">ARENA</text>
+  <text x="80" y="430" font-family="Helvetica,Arial,sans-serif" font-weight="500" font-size="40" fill="#1A1A1A">where problems meet talent meets capital</text>
 
-  <text x="80" y="424" font-family="Georgia,'Times New Roman',serif" font-size="38" fill="#1A1613">The best builders on Base, Solana, and Bitcoin.</text>
-  <text x="80" y="472" font-family="Georgia,'Times New Roman',serif" font-size="38" fill="rgba(26,22,19,0.62)">One weekend, one room. Hosted by Arc.</text>
-
-  <rect x="80" y="540" width="1040" height="4" fill="url(#rule)"/>
-  <text x="80" y="590" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="21" letter-spacing="2" fill="rgba(26,22,19,0.55)">ARENA &#183; ARCARENA.XYZ</text>
-  <text x="1120" y="590" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="21" letter-spacing="2" fill="rgba(26,22,19,0.55)">JULY 10-11, 2026</text>
+  <rect x="80" y="540" width="1040" height="3" fill="#B8892A"/>
+  <text x="80" y="592" font-family="Helvetica,Arial,sans-serif" font-size="21" letter-spacing="2" fill="rgba(26,22,19,0.55)">&#9812; ARCARENA.XYZ &#183; AN ARC INCUBATOR PROGRAM</text>
+  <text x="1120" y="592" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="21" letter-spacing="2" fill="rgba(26,22,19,0.55)">JULY 11 TO 12, 2026</text>
 </svg>

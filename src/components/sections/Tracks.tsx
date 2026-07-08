@@ -1,84 +1,62 @@
-import { event, go, links } from "@config";
-import { CtaLink } from "@/components/CtaLink";
+import { config } from "@config";
+import { Marker } from "@/components/Marker";
 
+/* Capital tracks: each firm is a track. Public tracks render in full; gated ones tease. */
 export function Tracks() {
-  const { tracks, bounties } = event;
-
+  const { tracks } = config;
   return (
     <section
       id="tracks"
       aria-labelledby="tracks-h"
-      className="reveal mx-auto max-w-[1180px] border-t border-line-soft px-6 py-20 md:px-10 md:py-28"
+      className="reveal border-t border-rule-soft bg-paper"
     >
-      <div className="grid gap-8 md:grid-cols-[14rem_1fr] md:gap-12">
-        <div className="flex items-baseline gap-3 md:flex-col md:gap-2">
-          <span className="mono text-sm font-semibold tracking-[0.1em] text-forge">03</span>
-          <span className="mono text-xs uppercase tracking-[0.22em] text-ink-faint">Tracks &amp; bounties</span>
-        </div>
+      <div className="mx-auto max-w-[1080px] px-6 py-12 md:px-10 md:py-16">
+        <Marker n="02">The tracks</Marker>
 
-        <div>
-          <h2 id="tracks-h" className="display max-w-[20ch] text-3xl leading-[1.05] sm:text-4xl md:text-[2.9rem]">
-            Three tracks. One standard: it has to work.
-          </h2>
+        <h2 id="tracks-h" className="wordmark mt-6 max-w-[18ch] text-4xl leading-[1.05] sm:text-5xl">
+          Each fund is a track.
+        </h2>
+        <p className="mt-5 max-w-[56ch] text-lg text-ink-dim">
+          One firm, one thesis, one check. The firm&apos;s request for startups is the brief, and
+          their first investment is the prize.
+        </p>
 
-          {/* tracks */}
-          <ul className="mt-8 grid gap-px overflow-hidden rounded-noneborder border-line bg-line sm:grid-cols-3">
-            {tracks.map((t) => (
-              <li key={t.name} className="flex flex-col gap-2 bg-panel p-6">
-                <span className="mono text-[0.7rem] uppercase tracking-[0.16em] text-forge">{t.tag}</span>
-                <span className="display text-xl">{t.name}</span>
-                <span className="text-sm leading-relaxed text-ink-dim">{t.blurb}</span>
-              </li>
-            ))}
-          </ul>
-
-          {/* bounties, a moment, not fine print */}
-          <div className="mt-10 rounded-noneborder border-line bg-bg-2 p-6 md:p-8">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="kicker mb-2">Bounty pool</p>
-                <p className="display heat-text text-4xl leading-none sm:text-5xl md:text-6xl">{bounties.pool}</p>
+        <div className="mt-14 grid gap-px overflow-hidden border border-rule bg-rule md:grid-cols-2">
+          {tracks.map((t) => (
+            <div key={t.firm} className="flex flex-col gap-4 bg-cream p-8">
+              <div className="flex items-baseline justify-between gap-3">
+                <span className="text-xs uppercase tracking-[0.18em] text-gold">{t.name} track</span>
+                <span className={`text-xs uppercase tracking-[0.16em] ${t.status === "confirmed" ? "text-red" : "text-ink-faint"}`}>
+                  {t.status === "confirmed" ? "Confirmed" : "Coming soon"}
+                </span>
               </div>
-              <p className="max-w-[34ch] text-sm text-ink-dim">{bounties.intro}</p>
-            </div>
 
-            <ul className="mt-8 divide-y divide-line-soft border-t border-line-soft">
-              {bounties.items.map((b, i) => {
-                const tbd = !b.sponsor || b.sponsor.startsWith("TODO");
-                return (
-                  <li key={i} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4">
-                    <span className="display min-w-[5ch] text-xl text-heat-amber">{b.amount}</span>
-                    <span className="flex-1 text-ink">{b.title}</span>
-                    {b.sponsorSlug ? (
-                      <a
-                        href={go(b.sponsorSlug)}
-                        className="mono text-xs uppercase tracking-[0.14em] text-ink-dim underline-offset-4 hover:text-forge hover:underline"
-                      >
-                        {b.sponsor}
-                      </a>
-                    ) : (
-                      <span className="mono text-xs uppercase tracking-[0.14em] text-ink-faint">
-                        {tbd ? "Sponsor TBA" : b.sponsor}
-                      </span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-
-            <div className="mt-7 flex flex-wrap items-center gap-4">
-              <CtaLink href={go("sponsor")} kind="secondary">
-                {links.sponsor.label}
-              </CtaLink>
-              <span className="mono text-xs text-ink-faint">
-                Bitcoin capital via{" "}
-                <a href={go("bitcoin")} className="text-ink-dim hover:text-forge">
-                  Fulgur Ventures
-                </a>
-                .
-              </span>
+              {t.public ? (
+                <>
+                  <a
+                    href={t.firmUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="arrow text-2xl font-semibold tracking-tight"
+                  >
+                    {t.firm}
+                  </a>
+                  <p className="text-ink-dim">{t.thesis}</p>
+                  <p className="mt-auto pt-2 text-sm text-ink-faint">
+                    <span className="text-ink">What good looks like. </span>
+                    {t.good}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <span className="text-2xl font-semibold tracking-tight text-ink-faint">{t.firm}</span>
+                  <p className="text-ink-dim">
+                    A second capital track, the agentic counterpart to Bitcoin. Details soon.
+                  </p>
+                </>
+              )}
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

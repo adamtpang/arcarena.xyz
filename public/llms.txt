@@ -1,0 +1,18 @@
+# arcarena (arcarena.xyz)
+
+> arcarena is Arc's modular hackathon, where problems meet talent meets capital. Edition one is a 36-hour Bitcoin build weekend sponsored by Fulgur Ventures at the Network School campus (Forest City, Johor, near Singapore), July 11 to 12, 2026.
+
+The model: each fund becomes a track. Its investment thesis is the brief (Fulgur's published request for startups for edition one), its first check is the prize, and capital deploys in tranches as teams hit milestones on a funding ladder, from a working demo to a fundable seed. Up to five hand-picked teams build, demo live to the people who write the check, and keep climbing. Arc and Network School are the base layer (SEZ legal, campus, housing, meals); arcarena is the operator.
+
+The whole thing is built as a template. Every event-specific detail (dates, tracks, the requests for startups, the funding ladder, judges, partners, and CTAs) lives in one config file, so the next edition is a swap, not a rebuild.
+
+## Key links
+- [Home](https://arcarena.xyz/): how it works for builders and investors, the tracks, the requests for startups, the funding ladder, prizes and judges, run of show, venue, FAQ, and apply.
+- [/sponsor](https://arcarena.xyz/sponsor): sponsorship tiers (Badge $5,000, Track $25,000, Title anchored by Fulgur Ventures for edition one).
+- [/rsvp](https://arcarena.xyz/rsvp): the owned short link that redirects to the current application form.
+- [/door](https://arcarena.xyz/door): the same redirect, tagged for on-site walk-ins via QR.
+- [/go/[slug]](https://arcarena.xyz/go/apply): attributable outbound redirects for apply, sponsor, mentor, and partner links.
+
+## About
+- An Arc (thearccity.com) incubator program, operated by Adam Pangelinan.
+- Builder: https://adampang.com

@@ -1,86 +1,110 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { event, go, links, RSVP_HREF } from "@config";
+import { config } from "@config";
 import { Countdown } from "@/components/Countdown";
-import { CtaLink } from "@/components/CtaLink";
 
 export function Hero() {
+  const { brand, event, prize, apply, chips } = config;
+  const facts = [`${prize.headline} headline prize`, ...chips];
   return (
     <section
       id="top"
       aria-labelledby="wordmark"
-      className="relative mx-auto max-w-[1180px] px-6 pb-16 pt-10 md:px-10 md:pb-24 md:pt-14"
+      className="relative overflow-hidden"
     >
-      {/* forge glow behind the wordmark */}
+      {/* arena art backdrop (drop the image at public/arena.jpg) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -z-10 left-2 top-24 h-[40vw] max-h-[440px] w-[72vw] max-w-[640px] rounded-full blur-[60px]"
+        className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center"
+        style={{ backgroundImage: "url(/arena.jpg)" }}
+      />
+      {/* warm scrim: near-solid cream on the left for readable text, fading right to reveal the arena */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(circle at 30% 50%, rgba(200,16,46,0.07), transparent 72%)",
+            "linear-gradient(100deg, #fffbf2 0%, rgba(255,251,242,0.94) 42%, rgba(255,251,242,0.7) 66%, rgba(255,251,242,0.42) 100%), linear-gradient(0deg, #fffbf2 0%, rgba(255,251,242,0) 30%)",
         }}
       />
 
-      <p className="kicker mb-6">{event.kicker}</p>
+      <div className="mx-auto max-w-[1080px] px-6 pb-12 pt-12 md:px-10 md:pb-16 md:pt-16">
+        <p className="marker mb-4">
+          <span className="crown" aria-hidden>
+            ♔
+          </span>
+          <span>
+            An{" "}
+            <a href={brand.parent.url} className="text-red-deep underline-offset-4 hover:underline">
+              {brand.parent.name}
+            </a>{" "}
+            incubator program
+          </span>
+        </p>
 
-      <h1 id="wordmark" className="wordmark">
-        {event.name}
-      </h1>
+        <h1 id="wordmark" className="wordmark text-[clamp(2.75rem,11vw,7rem)]">
+          {brand.wordmark}
+        </h1>
 
-      <p className="mt-6 max-w-[26ch] text-balance text-xl font-medium leading-snug text-ink sm:text-2xl">
-        {event.positioning}
-      </p>
+        <p className="mt-4 max-w-[30ch] text-balance text-2xl font-medium leading-[1.12] tracking-tight sm:text-3xl">
+          {brand.tagline}
+        </p>
 
-      {/* date + location */}
-      <div className="mono mt-9 flex flex-wrap gap-x-8 gap-y-2 text-sm">
-        <span>
-          <span className="text-ink-faint">DATE </span>
-          {event.date.display}
-        </span>
-        <span>
-          <span className="text-ink-faint">LOCATION </span>
-          {event.location.venue} · {event.location.city}
-        </span>
-      </div>
+        <p className="mt-4 max-w-[60ch] text-lg text-ink-dim">
+          The {event.track} track, sponsored by{" "}
+          <a
+            href={event.sponsor.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="arrow font-medium"
+          >
+            {event.sponsor.name}
+          </a>
+          . Ship in a weekend, then climb a funding ladder to a fundable seed.
+        </p>
 
-      {/* live countdown */}
-      <div className="mt-7 border-t border-line pt-7">
-        <p className="kicker mb-4">Doors open in</p>
-        <Countdown targetISO={event.countdownTargetISO} />
-      </div>
-
-      {/* primary CTAs: builder + investor co-primary, RSVP catch-all */}
-      <div className="mt-9 flex flex-wrap gap-3">
-        <CtaLink href={go("apply-builder")} kind="primary" size="lg">
-          {links["apply-builder"].label}
-          <ArrowRight size={16} aria-hidden />
-        </CtaLink>
-        <CtaLink href={go("apply-investor")} kind="secondary" size="lg">
-          {links["apply-investor"].label}
-        </CtaLink>
-      </div>
-      <p className="mt-4">
-        <Link
-          href={RSVP_HREF}
-          className="mono text-sm text-ink-dim underline-offset-4 transition-colors hover:text-ink hover:underline"
-        >
-          Not ready to apply? RSVP to stay in the loop →
-        </Link>
-      </p>
-
-      {/* co-host bar: three equal headline partners */}
-      <div className="mt-12 border-t border-line pt-6">
-        <p className="kicker mb-3">The ecosystems</p>
-        <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
-          {event.coHosts.map((c) => (
-            <Link
-              key={c.slug}
-              href={go(c.slug)}
-              className="display text-lg text-ink transition-colors hover:text-white-hot sm:text-xl"
+        {/* key facts, red-bordered */}
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {facts.map((c) => (
+            <li
+              key={c}
+              className="border border-red bg-cream/70 px-3 py-1 text-xs font-medium uppercase tracking-[0.12em] text-ink backdrop-blur-sm"
             >
-              {c.name}
-            </Link>
+              {c}
+            </li>
           ))}
+        </ul>
+
+        {/* when + where */}
+        <div className="mt-6 flex flex-wrap gap-x-8 gap-y-1.5 text-sm">
+          <span>
+            <span className="text-ink-faint">DATES </span>
+            {event.dates}
+          </span>
+          <span>
+            <span className="text-ink-faint">VENUE </span>
+            {event.venue}, {event.venueLocation}
+          </span>
+          <span>
+            <span className="text-ink-faint">FORMAT </span>
+            {event.format}
+          </span>
+        </div>
+
+        {/* dual CTAs, color-coded red */}
+        <div className="mt-7 flex flex-wrap items-center gap-3">
+          <a href={apply.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            {apply.builder}
+          </a>
+          <a href={apply.url} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+            {apply.investor}
+          </a>
+        </div>
+
+        {/* countdown to doors (applications stay open by invite until doors) */}
+        <div className="mt-7 border-t border-rule pt-5">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-red">
+            Doors open in
+          </p>
+          <Countdown targetISO={event.countdownISO} doneLabel="We are live" />
         </div>
       </div>
     </section>
