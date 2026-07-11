@@ -22,12 +22,12 @@ export function Header() {
           </span>
           <MusicToggle />
           <a
-            href={config.apply.url}
+            href={config.apply.groupUrl || config.apply.url}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary btn-sm"
           >
-            Apply
+            {config.apply.groupUrl ? "Join" : "Apply"}
           </a>
         </nav>
       </div>

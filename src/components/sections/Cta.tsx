@@ -21,9 +21,20 @@ export function Cta() {
           get first look. Bring something real to build on {event.track}.
         </p>
 
+        {/* what happens after you apply */}
+        <ol className="mt-8 grid gap-px overflow-hidden border border-rule bg-rule sm:grid-cols-3">
+          {apply.flow.map((s) => (
+            <li key={s.no} className="flex flex-col gap-2 bg-cream p-6">
+              <span className="text-sm tabular-nums text-red">{s.no}</span>
+              <span className="font-semibold tracking-tight">{s.title}</span>
+              <span className="text-sm text-ink-dim">{s.detail}</span>
+            </li>
+          ))}
+        </ol>
+
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <a href={apply.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-            {apply.builder}
+          <a href={apply.groupUrl || apply.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            {apply.group}
           </a>
           <a href={apply.url} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
             {apply.investor}

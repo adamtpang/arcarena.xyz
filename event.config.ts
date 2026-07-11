@@ -228,11 +228,12 @@ export type EventConfig = typeof event;
  * ========================================================================== */
 
 export type Rfs = { title: string; detail: string };
+export type CuriousIdea = { no: string; title: string; detail: string; note?: string };
 export type Rung = { stage: string; when: string; milestone: string; reward: string };
 export type LadderTeam = { name: string; rfs: string | null; rung: number; status: "open" | "confirmed" };
 export type Judge = { name: string; org: string; confirmed: boolean };
 export type Rubric = { criterion: string; detail: string };
-export type ArcTrack = { name: string; firm: string; firmUrl: string; status: "confirmed" | "gated"; public: boolean; thesis: string; good: string };
+export type ArcTrack = { name: string; firm: string; firmUrl: string; status: "confirmed" | "gated"; public: boolean; tag: string; accent: string; prize: string; thesis: string; good: string };
 export type FirmProfile = { name: string; url: string; public: boolean; oneLine: string; meta: { label: string; value: string }[]; portfolio?: string[]; note?: string };
 
 export const config = {
@@ -294,18 +295,36 @@ export const config = {
       firmUrl: "https://fulgur.ventures",
       status: "confirmed",
       public: true,
-      thesis: "Bitcoin infrastructure for the next 4 billion people, backed pre-seed to pre-IPO. Build to Fulgur's request for startups.",
+      tag: "Opinionated",
+      accent: "#b8892a",
+      prize: "First check + a builder residency",
+      thesis: "Bitcoin infrastructure for the next 4 billion people. Build to Fulgur's four requests for startups.",
       good: "Bitcoin native, not bolted on. Emerging-market relevance. Coachable founders.",
     },
     {
-      // TODO_CURIOUS: confirm Curious's mandate and check with James before setting public:true.
-      name: "Agentic",
-      firm: "Curious",
-      firmUrl: "https://thearccity.com",
-      status: "gated",
-      public: false,
-      thesis: "The agentic economy: companies where autonomous agents are the core users, workers, and customers.",
-      good: "Agents as first-class economic actors, not a chatbot bolted on.",
+      name: "Solana",
+      firm: "Solana Superteam",
+      firmUrl: "https://superteam.fun",
+      status: "confirmed",
+      public: true,
+      tag: "Ecosystem",
+      accent: "#9945ff",
+      prize: "$2,500+ in cash prizes",
+      thesis: "High-throughput, consumer-ready apps on Solana, with the Superteam community and its network behind you.",
+      good: "Fast, cheap, and built to reach real users on Solana.",
+    },
+    {
+      // Curious Ventures (curiousventures.xyz, GP Ashish Sood): the open track.
+      name: "Open",
+      firm: "Curious Ventures",
+      firmUrl: "https://curiousventures.xyz",
+      status: "confirmed",
+      public: true,
+      tag: "Unopinionated",
+      accent: "#c8102e",
+      prize: "First check + a hacker house spot",
+      thesis: "Build whatever you are curious about. Distribution is the only moat, so any vertical wins if it reaches users. Agents especially welcome.",
+      good: "Distribution baked in, not bolted on. Agents that win their own users.",
     },
   ] satisfies ArcTrack[],
 
@@ -326,15 +345,17 @@ export const config = {
       portfolio: ["Blockstream", "Breez", "Voltage", "Amboss", "Fold", "Casa", "Alby", "Umbrel", "Bitrefill"],
     },
     {
-      name: "Arc + Curious",
-      url: "https://thearccity.com",
+      name: "Curious Ventures",
+      url: "https://curiousventures.xyz",
       public: true,
-      oneLine: "Arc is the base layer. Curious is one of three Arc-co-managed pre-seed vehicles, alongside Fulgur and Arc Angel.",
+      oneLine: "Distribution-first pre-seed fund. AI commoditized code, Web3 commoditized capital, so distribution is the only moat.",
       meta: [
-        { label: "Role", value: "SEZ, legal, brand, campus" },
-        { label: "Curious", value: "Agent-native pre-seed, details soon" },
+        { label: "Stage", value: "Pre-seed, distribution-first" },
+        { label: "Check", value: "$250K to $500K" },
+        { label: "GP", value: "Ashish Sood" },
+        { label: "Focus", value: "Large Action Models, invisible Web3" },
       ],
-      note: "Curious specifics are confirmed per edition.",
+      portfolio: ["Memeland", "Pyse"],
     },
   ] satisfies FirmProfile[],
 
@@ -358,6 +379,9 @@ export const config = {
       { name: "Network School", url: "https://ns.com", role: "The campus, housing, meals, the room. 400-plus residents across 70-plus nationalities." },
       { name: "Arc", url: "https://thearccity.com", role: "The SEZ jurisdiction, legal incorporation in-zone, and the brand." },
     ],
+    // Official NS event listing (public: names Bitcoin, Solana Superteam, Curious Ventures, Fulgur).
+    eventListingUrl: "https://ns.com/events/cu1w4a2u",
+    eventListingLabel: "Official event listing on ns.com",
     handled: ["Housing on the NS campus", "All meals and coffee", "Fast wifi and power", "SEZ legal incorporation via Arc"],
     // TODO_ARC_REFERRAL: replace with the real Arc / Network School referral link or code.
     referralUrl: "https://ns.com",
@@ -372,7 +396,7 @@ export const config = {
     { q: "What do I build?", a: "Anything where Bitcoin is load-bearing, against one of Fulgur's four prompts. Working prototypes over slideware." },
     { q: "What does it cost to compete?", a: "Nothing. Selected builders get the room, mentors, meals, and the stage. Travel and lodging: details soon." },
     { q: "Who owns what I build?", a: "You do. arcarena does not take your IP. The check and any capital are separate, opt-in conversations." },
-    { q: "What team size works best?", a: "Three to four people is the strongest size. Solo and pairs run short on bandwidth; five-plus spend too long coordinating." },
+    { q: "What team size works best?", a: "Teams of two to four. Solo builders can find a team in the group. Four is the cap, five-plus spend too long coordinating." },
     { q: "Can I bring existing code?", a: "Bring your libraries and tools, not a finished product. The work toward the prize should start at the event." },
     { q: "How does the money work?", a: "The sponsor's first check is the prize, then the ladder pays out at the month one, two, and three milestones. Specifics are confirmed per edition." },
   ] satisfies Faq[],
@@ -380,7 +404,9 @@ export const config = {
   /* ---- partners: public, confirmed entities only (no warm leads) ---- */
   partners: [
     { name: "Arc", tier: "Host and base layer" },
-    { name: "Fulgur Ventures", tier: "Bitcoin track sponsor" },
+    { name: "Fulgur Ventures", tier: "Bitcoin track" },
+    { name: "Curious Ventures", tier: "Agentic track" },
+    { name: "Solana Superteam", tier: "Community partner" },
     { name: "Network School", tier: "Campus" },
   ] satisfies Partner[],
 
@@ -393,6 +419,30 @@ export const config = {
     { title: "Universal payments", detail: "No consumer, business, or AI agent should have to choose between Lightning, Ark, Spark, or ecash. Abstract the rails into one experience, privacy by default, bridging UPI, Pix, and FPS." },
   ] satisfies Rfs[],
 
+  /* ---- Curious Ventures' brief: the Next Fundable Ideas deck (July 2026), baked in ----
+   * Source: Ashish Sood's slides. 27 ideas on the Behavioral Fork thesis. */
+  curiousRfs: {
+    source: "https://curiousventures.xyz",
+    deckName: "Next Fundable Ideas",
+    intro:
+      "Twenty-seven startup ideas on the Behavioral Fork thesis. Every one survives four market shifts, and the tie-breaker is always the same: distribution is the only moat.",
+    filter: ["Agentic AI", "Web3 maturity", "Micro-earning", "Creator-led products"],
+    fundNow: [
+      { no: "01", title: "Agentic commerce", detail: "Every product and brand gets a dedicated AI agent that onboards, supports, and sells. The agent-to-agent thesis in action.", note: "Hottest venture category" },
+      { no: "02", title: "Quest and micro-task platforms", detail: "Brands post micro-tasks with micro-payouts: UGC, reshares, check-ins. Web3 questing mechanics on web2 rails.", note: "The edge is distribution" },
+      { no: "03", title: "Influencer-led marketplace", detail: "Trust is the gap in online brand discovery. A creator-led marketplace: quest-based micro-distribution, productized.", note: "Validates the thesis" },
+    ] satisfies CuriousIdea[],
+    more: [
+      "The AI creative stack", "Stablecoin remittance rails", "Work-from-home AI enablement", "GenAI animation and microdrama",
+      "Monetized AI selves", "Faith-tech AI", "Earn-more apps", "AI in the group chat", "Culturally native social",
+      "Global D2C from local", "Regional beauty and fashion AI", "Next-gen gaming", "AI-first fintech", "Creator-distributed AI tutors",
+      "Creator content licensing", "Royalty-backed creator finance", "Elder companion AI", "Snackable mobile entertainment",
+      "On-device edge AI", "Consent-driven data wallets", "AI diligence for syndicates", "AI for collective action",
+      "The pet economy", "Rural creator commerce",
+    ],
+    closer: "The alpha is in choosing.",
+  },
+
   /* ---- the funding ladder: ship, then keep climbing for real capital ---- */
   ladder: [
     { stage: "Hackathon", when: "July 11 to 12", milestone: "Ship a working demo on Bitcoin.", reward: "$5,000" },
@@ -401,21 +451,23 @@ export const config = {
     { stage: "Month 3", when: "October", milestone: "A fundable seed story, told in numbers.", reward: "Series A introductions" },
   ] satisfies Rung[],
 
-  /* ---- the teams: up to 5 pilot seats. rung = current step on the ladder (0 = not started). ----
-   * TODO_TEAMS: as teams are selected, set name, rfs (the prompt they chose), rung, status "confirmed". */
+  /* ---- the teams: 5 seats, one per Fulgur RFS prompt + one wildcard ----
+   * As teams confirm, set name and status "confirmed". rung = ladder step (0 = not started). */
   teams: [
-    { name: "Seat open", rfs: null, rung: 0, status: "open" },
-    { name: "Seat open", rfs: null, rung: 0, status: "open" },
-    { name: "Seat open", rfs: null, rung: 0, status: "open" },
-    { name: "Seat open", rfs: null, rung: 0, status: "open" },
-    { name: "Seat open", rfs: null, rung: 0, status: "open" },
+    { name: "Seat open", rfs: "Bitcoin savings apps", rung: 0, status: "open" },
+    { name: "Seat open", rfs: "TradFi exploits", rung: 0, status: "open" },
+    { name: "Seat open", rfs: "Bitcoin financial services + cyber infra", rung: 0, status: "open" },
+    { name: "Seat open", rfs: "Universal payments", rung: 0, status: "open" },
+    { name: "Seat open", rfs: "Open: a Curious fundable idea, or your own", rung: 0, status: "open" },
   ] satisfies LadderTeam[],
 
   /* ---- prize: the headline number, then the real prize (the path) ---- */
+  // Honest floor as of 2026-07-09: $3,000+ locked. Bump the headline the moment
+  // Fulgur/Arc confirm a larger number. Never publish a prize we cannot pay.
   prize: {
-    headline: "$10,000",
-    caption: "headline prize at the hackathon",
-    realPrize: "The real prize is the path. Keep shipping and the ladder pays out, all the way to a seed round.",
+    headline: "$3,000+",
+    caption: "in cash across the tracks, and the funds bring more than cash",
+    realPrize: "The VCs do not do cash prizes. They do better: a first check, a builder residency, and a spot in the hacker house. Keep shipping and the ladder pays out, all the way to a seed.",
   },
 
   /* ---- judges: 3 seats. TODO_JUDGES: names as they confirm. ---- */
@@ -440,11 +492,20 @@ export const config = {
   /* ---- the single call to action ---- */
   cta: { label: "Apply to build", slug: "apply" },
 
-  /* ---- application: one Google Form for builders + investors ---- */
+  /* ---- application: builders into the WhatsApp group, investors via the form ---- */
   apply: {
     url: "https://forms.gle/qohh6ahc8NBATMS9A",
+    // TODO_GROUP: paste the WhatsApp builder group invite link (chat.whatsapp.com/...).
+    // Empty = "Join the builder group" falls back to the form as the join request.
+    groupUrl: "",
+    group: "Join the builder group",
     builder: "Apply as a builder",
     investor: "Apply as an investor",
+    flow: [
+      { no: "01", title: "Join the builder group", detail: "One WhatsApp group, everyone in it. Meet the builders and form a team of two to four." },
+      { no: "02", title: "Pick your track", detail: "Bitcoin with Fulgur, or agentic with Curious. Claim a request for startups." },
+      { no: "03", title: "Build and win", detail: "Ship Saturday to Sunday. The best teams take the check and climb the funding ladder." },
+    ],
   },
 
   /* ---- sponsor tiers (the /sponsor page): DM to paid in two clicks ---- */
@@ -499,7 +560,7 @@ export const config = {
     url: "https://arcarena.xyz",
     title: "arcarena, where problems meet talent meets capital",
     description:
-      "arcarena is Arc's modular hackathon, where problems meet talent meets capital. Edition one is a 36-hour Bitcoin build weekend with Fulgur Ventures at Network School, July 11 to 12, 2026.",
+      "The Arc x Network School hackathon, where problems meet talent meets capital. A 36-hour build weekend with Fulgur Ventures (Bitcoin), Curious Ventures (agentic), and Solana Superteam, July 11 to 12, 2026.",
   },
 };
 

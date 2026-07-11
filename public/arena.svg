@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A classical coliseum arena in warm sandstone, with crown-crested banners">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3e4bf"/>
+      <stop offset="0.5" stop-color="#fbf1dd"/>
+      <stop offset="1" stop-color="#fffbf2"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.64" cy="0.1" r="0.55">
+      <stop offset="0" stop-color="#ffedb8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffedb8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="tierTop" width="74" height="112" patternUnits="userSpaceOnUse">
+      <rect width="74" height="112" fill="#e5d2a4"/>
+      <path d="M19 112 V54 Q37 27 55 54 V112 Z" fill="#9c8154"/>
+      <path d="M19 112 V54 Q37 27 55 54 V112 Z" fill="none" stroke="#cbb488" stroke-width="2"/>
+    </pattern>
+    <pattern id="tierMid" width="94" height="154" patternUnits="userSpaceOnUse">
+      <rect width="94" height="154" fill="#dac697"/>
+      <path d="M23 154 V72 Q47 34 71 72 V154 Z" fill="#8a6f45"/>
+      <path d="M23 154 V72 Q47 34 71 72 V154 Z" fill="none" stroke="#bfa87b" stroke-width="2.5"/>
+    </pattern>
+    <pattern id="tierLow" width="116" height="196" patternUnits="userSpaceOnUse">
+      <rect width="116" height="196" fill="#cdb987"/>
+      <path d="M27 196 V88 Q58 42 89 88 V196 Z" fill="#7c623b"/>
+      <path d="M27 196 V88 Q58 42 89 88 V196 Z" fill="none" stroke="#b39c6d" stroke-width="3"/>
+    </pattern>
+    <clipPath id="bowl"><ellipse cx="800" cy="640" rx="950" ry="560"/></clipPath>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="900" fill="url(#sun)"/>
+
+  <g clip-path="url(#bowl)">
+    <rect x="0" y="150" width="1600" height="58" fill="#ecdeb6"/>
+    <rect x="0" y="150" width="1600" height="58" fill="#c8a24a" fill-opacity="0.07"/>
+    <rect x="0" y="206" width="1600" height="112" fill="url(#tierTop)"/>
+    <rect x="0" y="318" width="1600" height="9" fill="#a98c56"/>
+    <rect x="0" y="327" width="1600" height="154" fill="url(#tierMid)"/>
+    <rect x="0" y="481" width="1600" height="9" fill="#977c49"/>
+    <rect x="0" y="490" width="1600" height="196" fill="url(#tierLow)"/>
+    <ellipse cx="800" cy="768" rx="660" ry="158" fill="#e7d6a6"/>
+    <ellipse cx="800" cy="768" rx="660" ry="158" fill="none" stroke="#c9b47f" stroke-width="4"/>
+    <ellipse cx="800" cy="770" rx="450" ry="98" fill="#efe1b6"/>
+    <ellipse cx="800" cy="770" rx="450" ry="98" fill="none" stroke="#dccb9e" stroke-width="2"/>
+  </g>
+
+  <rect x="0" y="710" width="1600" height="190" fill="#fffbf2" opacity="0.35"/>
+
+  <!-- crown-crested banners, on the revealed right side -->
+  <g>
+    <rect x="980" y="212" width="72" height="306" fill="#c8102e"/>
+    <path d="M980 518 L1016 484 L1052 518 Z" fill="#a00d25"/>
+    <rect x="980" y="212" width="72" height="306" fill="none" stroke="#b8892a" stroke-width="3"/>
+    <circle cx="1016" cy="276" r="17" fill="#b8892a"/>
+    <text x="1016" y="284" font-family="Georgia, serif" font-size="22" text-anchor="middle" fill="#fffbf2">&#9812;</text>
+    <rect x="1122" y="212" width="72" height="306" fill="#c8102e"/>
+    <path d="M1122 518 L1158 484 L1194 518 Z" fill="#a00d25"/>
+    <rect x="1122" y="212" width="72" height="306" fill="none" stroke="#b8892a" stroke-width="3"/>
+    <circle cx="1158" cy="276" r="17" fill="#b8892a"/>
+    <text x="1158" y="284" font-family="Georgia, serif" font-size="22" text-anchor="middle" fill="#fffbf2">&#9812;</text>
+  </g>
+</svg>

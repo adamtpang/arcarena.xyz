@@ -49,6 +49,16 @@ export function Venue() {
         <p className="mt-6 text-sm text-ink-faint">
           {venue.location} · {venue.travel} · {venue.swag}
         </p>
+        <p className="mt-2 text-sm">
+          <a
+            href={venue.eventListingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="arrow font-medium"
+          >
+            {venue.eventListingLabel}
+          </a>
+        </p>
       </div>
     </section>
   );

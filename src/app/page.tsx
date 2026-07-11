@@ -1,5 +1,6 @@
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
+import { Stakes } from "@/components/sections/Stakes";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Tracks } from "@/components/sections/Tracks";
 import { Rfs } from "@/components/sections/Rfs";
@@ -20,6 +21,7 @@ export default function Page() {
       <Header />
       <main>
         <Hero />
+        <Stakes />
         <HowItWorks />
         <Tracks />
         <Rfs />

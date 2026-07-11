@@ -12,7 +12,7 @@ export function Partners() {
       <Marker n="10">Partners</Marker>
 
       <h2 id="partners-h" className="wordmark mt-6 max-w-[18ch] text-4xl leading-[1.05] sm:text-5xl">
-        Built with.
+        In your corner.
       </h2>
 
       <ul className="mt-12 grid gap-px overflow-hidden border border-rule bg-rule sm:grid-cols-3">

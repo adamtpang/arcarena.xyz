@@ -1,3 +1,9 @@
+<!-- BEGIN:claude-chat-continuation -->
+# Continue From Claude Chats
+
+Claude Code transcripts for this project have been indexed for Codex in `CODEX_CONTINUE_FROM_CLAUDE.md`. Read that file when the user asks to continue work from Claude, resume a Claude session, or understand what Claude already tried.
+<!-- END:claude-chat-continuation -->
+
 <!-- BEGIN:claude-codex-sync -->
 # Claude/Codex sync
 
@@ -9,7 +15,7 @@ If this file contains older project context that conflicts with `CLAUDE.md`, pre
 <!-- BEGIN:imported-claude-context -->
 # Imported Claude context
 
-Copied from `CLAUDE.md` on 2026-07-07 so Codex starts with the same project context Claude Code used. Keep `CLAUDE.md` as the source of truth and refresh this block after meaningful Claude-side progress.
+Copied from `CLAUDE.md` on 2026-07-08 so Codex starts with the same project context Claude Code used. Keep `CLAUDE.md` as the source of truth and refresh this block after meaningful Claude-side progress.
 
 <!-- SOURCE: CLAUDE.md -->
 

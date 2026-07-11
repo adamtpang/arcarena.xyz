@@ -44,7 +44,6 @@ export function FirmProfiles() {
                 <p className="mt-1 text-sm text-ink-dim">{f.portfolio.join(" · ")}</p>
               </div>
             )}
-            {f.note && <p className="text-xs text-ink-faint">{f.note}</p>}
           </div>
         ))}
       </div>
