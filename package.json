@@ -11,7 +11,7 @@
     "qr": "node scripts/generate-qr.mjs"
   },
   "dependencies": {
-    "next": "^15",
+    "next": "15.5.28",
     "react": "^19",
     "react-dom": "^19",
     "resend": "^4",
@@ -27,10 +27,24 @@
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
     "@tailwindcss/postcss": "^4",
-    "postcss": "^8",
+    "postcss": "8.5.23",
     "eslint": "^9",
-    "eslint-config-next": "^15",
+    "eslint-config-next": "15.5.28",
     "qrcode": "^1.5.4",
     "@types/qrcode": "^1.5.5"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "8.5.23",
+      "sharp": "0.35.5"
+    },
+    "@tailwindcss/postcss": {
+      "postcss": "8.5.23"
+    },
+    "js-yaml": "4.3.2",
+    "nanoid": "3.3.18",
+    "source-map-js": "1.2.2",
+    "brace-expansion@1": "1.1.20",
+    "brace-expansion@5": "5.0.11"
   }
 }
